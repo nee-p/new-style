@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only" default-locale="en-US">
+  <!-- Modified Citation Style -->
+  <info>
+    <title>Dr.NP Citation Style</title>
+    <id>http://www.zotero.org/styles/dr-np-citation</id>
+    <link href="http://www.zotero.org/styles/dr-np-citation" rel="self"/>
+    <author>
+      <name>Jiongdd</name>
+      <email>drnrnzn@gmail.com</email>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="engineering"/>
+    <category field="science"/>
+    <summary>Customized citation style for Dr.NP.</summary>
+    <updated>2025-01-29T03:48:18+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names variable="author">
+      <name delimiter-precedes-last="always" et-al-min="4" et-al-use-first="3" initialize-with=" " name-as-sort-order="all" sort-separator=" ">
+        <name-part name="given" text-case="uppercase" font-variant="normal"/>
+      </name>
+    </names>
+  </macro>
+  <macro name="title">
+    <text variable="title"/>
+  </macro>
+  <macro name="titleField">
+    <choose>
+      <if type="report">
+        <text macro="title" suffix="[Report]. "/>
+      </if>
+      <else-if type="thesis">
+        <text macro="title" suffix="[Dissertation]. "/>
+      </else-if>
+      <else-if type="book">
+        <text macro="title" suffix="[Book]. "/>
+      </else-if>
+      <else-if type="paper-conference">
+        <text macro="title" suffix="[Conference Paper]. "/>
+      </else-if>
+      <else-if type="webpage">
+        <text macro="title" suffix="[Online]. "/>
+      </else-if>
+      <else-if type="patent">
+        <text macro="title"/>
+        <text variable="number" prefix="Patent No: " suffix="[Patent]. "/>
+      </else-if>
+      <else>
+        <text macro="title" suffix="[Journal]. "/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <choose>
+      <if type="chapter paper-conference" match="any">
+        <text variable="container-title" suffix=". "/>
+      </if>
+      <else>
+        <text variable="container-title"/>
+      </else>
+    </choose>
+    <date variable="issued" prefix=", ">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if variable="DOI">
+        <text variable="DOI" prefix="doi:"/>
+      </if>
+      <else-if variable="URL">
+        <text variable="URL"/>
+      </else-if>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number" sort="ascending"/>
+    </sort>
+    <layout vertical-align="sup" prefix="[" suffix="]" delimiter=",">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+  <bibliography et-al-min="4" et-al-use-first="3" second-field-align="flush" entry-spacing="0">
+    <layout suffix=".">
+      <text variable="citation-number" prefix="[" suffix="]"/>
+      <text macro="author" suffix=". "/>
+      <group delimiter=", ">
+        <text variable="publisher"/>
+        <date variable="issued" suffix=". ">
+          <date-part name="year"/>
+        </date>
+      </group>
+      <text macro="titleField"/>
+      <text macro="publisher"/>
+      <text macro="access" prefix=". "/>
+    </layout>
+  </bibliography>
+</style>
