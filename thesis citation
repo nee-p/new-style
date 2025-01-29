@@ -55,6 +55,9 @@
       <else-if type="standard">
         <text macro="title" suffix="[S]. "/>
       </else-if>
+      <else-if type="article-newspaper">
+        <text macro="title" suffix="[N]. "/>
+      </else-if>
       <else-if type="webpage">
         <text macro="title" suffix="[EB/OL]. "/>
       </else-if>
@@ -71,16 +74,7 @@
     </date>
   </macro>
   
-  <macro name="access">
-    <choose>
-      <if variable="DOI">
-        <text variable="DOI" prefix="doi:"/>
-      </if>
-      <else-if variable="URL">
-        <text variable="URL"/>
-      </else-if>
-    </choose>
-  </macro>
+  
   
   <citation collapse="citation-number">
     <sort>
@@ -103,7 +97,7 @@
       </group>
       <text macro="titleField"/>
       <text macro="publisher"/>
-      <text macro="access" prefix=". "/>
+      
     </layout>
   </bibliography>
 </style>
