@@ -5,12 +5,13 @@
     <id>http://www.zotero.org/styles/dr-np-citation</id>
     <link href="http://www.zotero.org/styles/dr-np-citation" rel="self"/>
     <author>
-      <name>Jiongdd</name>
+      <name>Neeranzan</name>
       <email>drnrnzn@gmail.com</email>
     </author>
     <category citation-format="numeric"/>
-    <category field="engineering"/>
+    <category field="medicine"/>
     <category field="science"/>
+    
     <summary>Customized citation style for Dr.NP.</summary>
     <updated>2025-01-29T03:48:18+00:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
@@ -106,3 +107,4 @@
     </layout>
   </bibliography>
 </style>
+
