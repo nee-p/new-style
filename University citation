@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0">
+  <info>
+    <title>HBMU Citation Style</title>
+    <id>http://www.zotero.org/styles/hbmu-custom</id>
+    <link href="http://www.zotero.org/styles/hbmu-custom" rel="self"/>
+    <category citation-format="numeric"/>
+    <category field="medicine"/>
+    <updated>2023-10-15T18:30:00+00:00</updated>
+    <rights license="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</rights>
+  </info>
+
+  <macro name="title">
+    <text variable="title"/>
+  </macro>
+
+  <macro name="author">
+    <names variable="author">
+      <!-- Truncate to 3 authors + "et al." -->
+      <name delimiter=", " initialize-with=". " et-al-min="4" et-al-use-first="3"/>
+    </names>
+  </macro>
+
+  <citation>
+    <layout prefix="[" suffix="]" delimiter=",">
+      <text variable="citation-number" vertical-align="sup"/>
+    </layout>
+  </citation>
+
+  <bibliography>
+    <layout>
+      <!-- Print the citation number in brackets -->
+      <text variable="citation-number" prefix="[" suffix="]"/>
+      
+      <!-- Outer group: no more delimiter=". " to avoid unwanted ". " when author/title are empty -->
+      <group>
+        
+        <!-- Author macro: if non-empty, it will get ". " at the end -->
+        <text macro="author" suffix=". "/>
+        
+        <!-- Second group: holds title and the reference-type labels ([ J ], [ M ], [ A ], etc.) -->
+        <group>
+          <text macro="title"/>
+          <choose>
+            <!-- Journal Article [ J ] -->
+            <if type="article-journal">
+              <text prefix=" [" suffix="] " value="J"/> <!-- Label: [ J ] -->
+              <text variable="container-title" suffix=", "/>
+              <date variable="issued" form="numeric" date-parts="year" prefix=", "/>
+              <group delimiter="">
+                <text variable="volume"/>
+                <text variable="issue" prefix="(" suffix=")"/>
+                <text variable="page" prefix=": "/>
+              </group>
+            </if>
+            
+            <!-- Book [M] -->
+            <else-if type="book">
+              <text value=" [M]. "/>
+              <text variable="publisher-place" suffix=": "/>
+              <text variable="publisher" suffix=", "/>
+              <date variable="issued" form="numeric" date-parts="year"/>
+              <text variable="page" prefix=": "/>
+            </else-if>
+            
+            <!-- Conference Paper [A] -->
+            <else-if type="paper-conference">
+              <text value=" [A]. In: "/>
+              <text variable="container-title" prefix="[" suffix="C]. "/>
+              <text variable="publisher-place" suffix=": "/>
+              <text variable="publisher" suffix=", "/>
+              <date variable="issued" form="numeric" date-parts="year"/>
+              <text variable="page" prefix=": "/>
+            </else-if>
+            
+            <!-- ... (other document types follow the same pattern) ... -->
+            
+          </choose>
+        </group>
+      </group>
+    </layout>
+  </bibliography>
+</style>
